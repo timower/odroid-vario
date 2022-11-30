@@ -13,3 +13,5 @@ IMAGE_ROOTFS_SIZE ?= "8192"
 
 # For systemd
 IMAGE_ROOTFS_EXTRA_SPACE:append = " + 4096"
+
+IMAGE_FEATURES += "read-only-rootfs"
