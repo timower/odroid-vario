@@ -15,6 +15,7 @@ RDEPENDS:${PN} = " \
 
 SRC_URI =      "\
 	file://${BPN}.service \
+	file://${BPN} \
 "
 
 do_compile() {
@@ -24,8 +25,14 @@ do_compile() {
 do_install() {
   install -d ${D}${systemd_unitdir}/system
 	install -m 0644 ${WORKDIR}/${BPN}.service ${D}${systemd_unitdir}/system
+
+  install -d ${D}${bindir}
+	install -m 0755 ${WORKDIR}/${BPN} ${D}${bindir}
+
+  install -d ${D}/data/home/xcsoar
 }
 
 SYSTEMD_SERVICE:${PN} = "${PN}.service"
 
-FILES:${PN} = ""
+FILES:${PN} = "${bindir}/${BPN} \
+               /data/home/xcsoar"

@@ -32,12 +32,12 @@ Wants=boot.automount
 After=boot.automount
 
 [Service]
-ExecStart=/usr/bin/xcsoar -fly -dpi=320
+ExecStart=/usr/bin/xcsoar-start
 Type=idle
 Restart=always
 RestartSec=0
 
-Environment=HOME=/home/root
+Environment=HOME=/data/home/xcsoar
 
 TTYPath=/dev/tty1
 TTYReset=yes

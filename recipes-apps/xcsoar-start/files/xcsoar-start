@@ -1,0 +1,4 @@
+#!/bin/sh
+set -eu
+mender commit || true
+xcsoar -fly -dpi=320 -datapath=/data/xcsoar
