@@ -30,6 +30,7 @@ do_install() {
 	install -m 0755 ${WORKDIR}/${BPN} ${D}${bindir}
 
   install -d ${D}/data/home/xcsoar
+  install -d ${D}/data/home/xcsoar/.xcsoar
 }
 
 SYSTEMD_SERVICE:${PN} = "${PN}.service"
