@@ -1,0 +1,55 @@
+#!/bin/sh
+
+DIALOG_OUT="$(mktemp)"
+
+commit_mender() {
+  mender commit || true
+}
+
+run_xcsoar() {
+  xcsoar -fly -dpi=320
+}
+
+shell() {
+  clear
+  /bin/sh
+}
+
+do_update() {
+  clear
+  mount /dev/sda1 /mnt || return
+  mender install /mnt/core-image-vario-vario-odroidc4.mender || return
+  umount /mnt || return
+
+  dialog --clear --msgbox "Update OK" 0 0
+}
+
+main_menu() {
+  dialog --clear --nocancel --menu "Vario" 0 0 0 \
+    XCSoar     "Run XCsoar" \
+    Shell      "Open command shell" \
+    Update     "Apply USB Update" \
+    Reboot     "Reboot system" \
+    Poweroff   "Power off system" \
+    Exit       "Exit" 2>"${DIALOG_OUT}"
+
+    item=$(<"${DIALOG_OUT}")
+    case $item in
+      XCSoar) run_xcsoar;;
+      Shell) shell;;
+      Update) do_update;;
+      Reboot) reboot;;
+      Poweroff) poweroff;;
+      Exit) exit 0;;
+    esac
+
+}
+
+commit_mender
+run_xcsoar
+
+while true
+do
+  main_menu
+done
+

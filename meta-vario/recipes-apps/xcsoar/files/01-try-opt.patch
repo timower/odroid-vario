@@ -1,0 +1,27 @@
+diff --git a/src/Terrain/RasterRenderer.cpp b/src/Terrain/RasterRenderer.cpp
+index 013323efda..e2298e6e47 100644
+--- a/src/Terrain/RasterRenderer.cpp
++++ b/src/Terrain/RasterRenderer.cpp
+@@ -121,14 +121,14 @@ RasterRenderer::~RasterRenderer()
+ static unsigned
+ GetQuantisation()
+ {
+-  if (IsUserIdle(2000))
+-    /* full terrain resolution when the user is idle */
+-    return 1;
+-  else if (IsUserIdle(1000))
+-    /* reduced terrain resolution when the user has interacted with
+-       XCSoar recently */
+-    return 2;
+-  else
++  // if (IsUserIdle(2000))
++  //   /* full terrain resolution when the user is idle */
++  //   return 1;
++  // else if (IsUserIdle(1000))
++  //   /* reduced terrain resolution when the user has interacted with
++  //      XCSoar recently */
++  //   return 2;
++  // else
+     /* the user is actively operating XCSoar: reduce UI latency */
+     return Layout::FastScale(2);
+ }

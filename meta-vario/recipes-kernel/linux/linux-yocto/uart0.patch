@@ -1,0 +1,14 @@
+diff --git a/meson-sm1-odroid-c4.dts.orig b/meson-sm1-odroid-c4.dts
+index 8c30ce6..826798c 100644
+--- a/arch/arm64/boot/dts/amlogic/meson-sm1-odroid-c4.dts
++++ b/arch/arm64/boot/dts/amlogic/meson-sm1-odroid-c4.dts
+@@ -46,3 +46,9 @@
+ &ir {
+        linux,rc-map-name = "rc-odroid";
+ };
++
++&uart_A {
++  status = "okay";
++  pinctrl-0 = <&uart_a_pins>;
++  pinctrl-names = "default";
++};
