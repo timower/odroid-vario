@@ -11,6 +11,7 @@ inherit systemd
 
 RDEPENDS:${PN} = " \
 	xcsoar \
+  dialog \
 "
 
 SRC_URI =      "\
@@ -29,11 +30,10 @@ do_install() {
   install -d ${D}${bindir}
 	install -m 0755 ${WORKDIR}/${BPN} ${D}${bindir}
 
-  install -d ${D}/data/home/xcsoar
-  install -d ${D}/data/home/xcsoar/.xcsoar
+  install -d ${D}/data/home/.xcsoar
 }
 
 SYSTEMD_SERVICE:${PN} = "${PN}.service"
 
 FILES:${PN} = "${bindir}/${BPN} \
-               /data/home/xcsoar"
+               /data/home/.xcsoar"

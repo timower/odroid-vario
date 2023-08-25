@@ -1,0 +1,15 @@
+# POKY_BBLAYERS_CONF_VERSION is increased each time build/conf/bblayers.conf
+# changes incompatibly
+POKY_BBLAYERS_CONF_VERSION = "2"
+
+BBPATH = "${TOPDIR}"
+BBFILES ?= ""
+
+BBLAYERS ?= " \
+  ##OEROOT##/../openembedded-core/meta \
+  ##OEROOT##/../meta-meson \
+  ##OEROOT##/../meta-mender/meta-mender-core \
+  ##OEROOT##/../meta-mender-community/meta-mender-amlogic \
+  ##OEROOT##/../meta-vario \
+  ##OEROOT##/../meta-openembedded/meta-oe \
+  "

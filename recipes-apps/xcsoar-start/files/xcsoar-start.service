@@ -32,12 +32,12 @@ Wants=boot.automount
 After=boot.automount
 
 [Service]
-ExecStart=/usr/bin/xcsoar-start
+ExecStart=-/sbin/agetty -o '' --skip-login --login-program /usr/bin/xcsoar-start - $TERM
 Type=idle
 Restart=always
 RestartSec=0
 
-Environment=HOME=/data/home/xcsoar
+Environment=HOME=/data/home
 
 TTYPath=/dev/tty1
 TTYReset=yes

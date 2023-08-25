@@ -2,8 +2,7 @@ SUMMARY = "Tiny image with Xcsoar"
 
 IMAGE_INSTALL = "packagegroup-core-boot ${CORE_IMAGE_EXTRA_INSTALL}"
 IMAGE_INSTALL += "wpa-supplicant linux-firmware-ralink"
-IMAGE_INSTALL += "xcsoar "
-# xcsoar-start
+IMAGE_INSTALL += "xcsoar xcsoar-start"
 
 IMAGE_LINGUAS = " "
 
