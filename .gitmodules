@@ -1,0 +1,20 @@
+[submodule "openembedded-core"]
+	path = openembedded-core
+	url = https://git.openembedded.org/openembedded-core
+	branch = kirkstone
+[submodule "meta-openembedded"]
+	path = meta-openembedded
+	url = https://git.openembedded.org/meta-openembedded
+	branch = kirkstone
+[submodule "bitbake"]
+	path = bitbake
+	url = https://git.openembedded.org/bitbake
+[submodule "meta-meson"]
+	path = meta-meson
+	url = https://github.com/superna9999/meta-meson.git
+[submodule "meta-mender"]
+	path = meta-mender
+	url = https://github.com/mendersoftware/meta-mender
+[submodule "meta-mender-community"]
+	path = meta-mender-community
+	url = https://github.com/mendersoftware/meta-mender-community.git
