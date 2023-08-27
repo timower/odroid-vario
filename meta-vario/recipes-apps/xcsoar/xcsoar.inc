@@ -9,7 +9,6 @@ DEPENDS = "	\
 		pkgconfig-native \
 		libxslt-native \
 		librsvg-native \
-		imagemagick-native \
 		libinput \
 		lua \
 		udev \
@@ -25,6 +24,9 @@ DEPENDS = "	\
 		libsodium \
 		c-ares \
 "
+# sox-native
+# imagemagick-native
+# fontconfig-native
 
 RDEPENDS:${PN} = "\
         ttf-dejavu-sans-condensed \
@@ -35,11 +37,12 @@ S = "${WORKDIR}/git"
 LC_LOCALE_PATH = "${datadir}/locale"
 
 SRC_URI += " \
+  file://input.xci \
 	file://0007-Disable-touch-screen-auto-detection.patch \
 	file://01-try-opt.patch \
+	file://02-etc-xcsoar.patch \
 	https://boostorg.jfrog.io/artifactory/main/release/1.79.0/source/boost_1_80_0.tar.bz2;sha256sum=1e19565d82e43bc59209a168f5ac899d3ba471d55c7610c677d4ccf2c9c500c0;unpack=0 \
 "
-#  file://input.xci
 #  file://profile.prf
 
 inherit pkgconfig
@@ -72,16 +75,20 @@ do_configure() {
 do_compile() {
 	export PATH=$PATH:/usr/bin
 	ln -sf convert.im7 ${STAGING_DIR_NATIVE}/usr/bin/convert
+	ln -sf montage.im7 ${STAGING_DIR_NATIVE}/usr/bin/montage
 	export FONTCONFIG_PATH=/etc/fonts
 	oe_runmake
 }
 
 do_install() {
 	oe_runmake install-bin install-mo DESTDIR=${D}
+  install -d ${D}/etc/xcsoar
+  install -m 0755 ${WORKDIR}/*.xci ${D}/etc/xcsoar
 }
 
 FILES:${PN} = " \
 	${bindir}/xcsoar \
 	${bindir}/vali-xcs \
+  /etc/xcsoar/* \
 	${LC_LOCALE_PATH}/*/LC_MESSAGES/xcsoar.mo \
 "
